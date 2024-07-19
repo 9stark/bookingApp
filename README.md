@@ -45,13 +45,16 @@ CREATE TABLE public.book (
 
 # Pasos para usar el aplicativo con Docker (Etapa 1: configuracion de PostgresSQL)
 1.Descargar o crear el archivo backup
+
 2.Poner el archivo en una carpeta y usando la terminal y los comando cd posicionarse en la carpeta
 Ejemplo:   cd C:\Users\Oscar\Downloads\docker
+
 3) Usar el siguiente comando para crear la imagen de docker de postgress
 docker run --name postgres-db -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=reservations_db -p 5432:5432 -d postgres:latest
 
 4) Ejecutar el siguiente comando para realizar la restauracion del backup
 docker cp backup.sql postgres-db:/backup.sql
+
 # Pasos para usar el aplicativo con Docker (Etapa 2: Crear imagen y despligue del aplicativo en docker)
 1.Usando la terminal de windows CMD posicionarte en la ruta raiz del proyecto
 Ejemplo:   cd C:\JavaProjects\bookingApp
