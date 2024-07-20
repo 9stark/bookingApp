@@ -1,0 +1,41 @@
+version: '3.9'
+services:
+  app:
+    image: booking
+    ports:
+      - "8080:8080"
+    networks:
+      - my-network
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres-db
+    environment:
+      POSTGRES_DB: reservations_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    networks:
+      - my-network
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./backups:/backups  # Mount backup directory
+
+  restore:
+    image: postgres:latest
+    container_name: restore-db
+    command: /bin/bash -c "psql -U your_user -d reservations_db -f /backups/backup.sql"
+    volumes:
+      - ./backups:/backups  # Mount backup directory
+    networks:
+      - my-network
+    depends_on:
+      - postgres
+
+networks:
+  my-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
