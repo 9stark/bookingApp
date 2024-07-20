@@ -29,7 +29,7 @@ Independiende de las opciones primero
 
  git clone https://github.com/9stark/bookingApp.git 
  
-## Opcion 1: Crear imagen y despligue del aplicativo usando docker composer)
+# Opcion 1: Crear imagen y despligue del aplicativo usando docker composer)
 
 1. Configura la conexion `src/main/resources/application.properties`.
 
@@ -65,9 +65,9 @@ docker run -p 8080:8080 booking (Corre el aplicativo)
 
 
 
-## Opcion 2 Configuracion del app local usando el Idle de su preferencia
+# Opcion 2 Configuracion del app local usando el Idle de su preferencia
 
-# Paso 1: Instalacion de postgres o base de datos y tablas
+## Paso 1: Instalacion de postgres o base de datos y tablas
 
 Pasos para la creacion de la base de datos en postGres para uso local del aplicativo desde Idle (Intellij, Eclipse,etc)
 
@@ -99,7 +99,7 @@ CREATE TABLE public.book (
     CONSTRAINT book_age_check CHECK (((age >= 18) AND (age <= 100)))
 );
 
-# Paso 2: Ejecucion de la app
+## Paso 2: Ejecucion de la app
 
 1. Configura la base de datos en `src/main/resources/application.properties`.
 
@@ -111,7 +111,7 @@ spring.datasource.url=jdbc:postgresql://localhost:5432/reservations_db
 
 
 
-## Opcion 3: configurar usando una instalacion PostgresSQL de manera local.
+# Opcion 3: configurar usando una instalacion PostgresSQL de manera local.
 
 1. Descargar o crear el archivo backup ubicado en /backups/backup.sql docker network create my-network
 
